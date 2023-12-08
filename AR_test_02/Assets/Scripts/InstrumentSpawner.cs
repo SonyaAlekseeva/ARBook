@@ -1,30 +1,31 @@
-﻿using UnityEngine;
+﻿using System.Linq;
+using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class InstrumentSpawner : MonoBehaviour
     {
         public Orchestra Orchestra;
-        public InstrumentData[] instruments;
-
-        private int _scannedId;
+        public InstrumentsToImages Instruments;
+        
+        private InstrumentData _scannedInstrument;
         private int _scannedPage;
 
-        public void ScanInstrument(int id, int page)
+        public void ScanInstrument(string imageName)
         {
-            _scannedId = id;
-            _scannedPage = page;
+            string[] values = imageName.Split("_");
+            string name = values[0];
+            _scannedPage = int.Parse(values[1]);
+            _scannedInstrument = Instruments.GetInstrumentByName(name);
         }
 
         public void SpawnInstrument(Vector3 position)
         {
-            if (_scannedId < 0)
+            if (_scannedInstrument == null)
                 return;
-
-            InstrumentData data = instruments[_scannedId];
             
-            Instrument instrument = Instantiate(data.Model);
-            instrument.Initialize(data, _scannedPage, position);
+            Instrument instrument = Instantiate(_scannedInstrument.Model);
+            instrument.Initialize(_scannedInstrument, _scannedPage, position);
             
             Orchestra.AddInstrument(instrument);
         }

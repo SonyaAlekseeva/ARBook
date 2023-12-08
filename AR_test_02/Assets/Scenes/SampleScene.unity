@@ -853,6 +853,7 @@ GameObject:
   - component: {fileID: 717729234}
   - component: {fileID: 717729233}
   - component: {fileID: 717729235}
+  - component: {fileID: 717729236}
   m_Layer: 0
   m_Name: XR Origin
   m_TagString: Untagged
@@ -933,6 +934,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlaneMarkerPrefab: {fileID: 541257910}
+--- !u!114 &717729236
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 717729230}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4dea56a9eaadd1c439095de4f9a371cb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_SerializedLibrary: {fileID: 11400000, guid: ce1d3b0098fe29540b507427ac3731c6, type: 2}
+  m_MaxNumberOfMovingImages: 0
+  m_TrackedImagePrefab: {fileID: 0}
 --- !u!1 &723956697
 GameObject:
   m_ObjectHideFlags: 0
@@ -1479,9 +1495,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   Orchestra: {fileID: 569125029}
-  instruments:
-  - {fileID: 11400000, guid: 745d27bac0d6c4f4eb1af923bc929de9, type: 2}
-  - {fileID: 11400000, guid: 8a6d39d9a2a8bff48a1bb34281198a0c, type: 2}
+  Instruments: {fileID: 0}
 --- !u!4 &1261524722
 Transform:
   m_ObjectHideFlags: 0
