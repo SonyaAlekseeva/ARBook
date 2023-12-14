@@ -14,16 +14,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Instruments:
   - Name: Violin
-    Data: {fileID: 11400000, guid: 745d27bac0d6c4f4eb1af923bc929de9, type: 2}
+    Target: {fileID: 916265110239634413, guid: e88c2634cb6b7764bb865596c4c8603d, type: 3}
   - Name: Cello
-    Data: {fileID: 11400000, guid: 8a6d39d9a2a8bff48a1bb34281198a0c, type: 2}
+    Target: {fileID: 0}
   - Name: FrenchHorn
-    Data: {fileID: 11400000, guid: 8a6d39d9a2a8bff48a1bb34281198a0c, type: 2}
+    Target: {fileID: 0}
   - Name: Flute
-    Data: {fileID: 11400000, guid: 8a6d39d9a2a8bff48a1bb34281198a0c, type: 2}
+    Target: {fileID: 0}
   - Name: Clarinet
-    Data: {fileID: 11400000, guid: 8a6d39d9a2a8bff48a1bb34281198a0c, type: 2}
+    Target: {fileID: 0}
   - Name: Triangle
-    Data: {fileID: 11400000, guid: 8a6d39d9a2a8bff48a1bb34281198a0c, type: 2}
+    Target: {fileID: 0}
   - Name: Timpani
-    Data: {fileID: 11400000, guid: 8a6d39d9a2a8bff48a1bb34281198a0c, type: 2}
+    Target: {fileID: 0}
+  - Name: Violin_Cello
+    Target: {fileID: 7717432758255282040, guid: 128a2c74780b0ce489fc0f49bddb37a4, type: 3}

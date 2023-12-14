@@ -5,10 +5,9 @@ namespace DefaultNamespace
 {
     public class Orchestra : MonoBehaviour
     {
-        public float PlayTimerNormalized => _playTimer / PlayTimeSeconds;
+        public float PlayTimer => _playTimer;
         public float PlayTimeSeconds;
-        
-        private List<Instrument> _instruments = new List<Instrument>();
+        public List<Instrument> Instruments { get; } = new List<Instrument>();
 
         private bool _isPlaying;
         private float _playTimer;
@@ -30,7 +29,7 @@ namespace DefaultNamespace
         {
             _playTimer = PlayTimeSeconds * t;
             
-            foreach (Instrument instrument in _instruments)
+            foreach (Instrument instrument in Instruments)
             {
                 if (!instrument.IsMuted)
                     instrument.PlayInOrchestra(_playTimer);
@@ -39,7 +38,7 @@ namespace DefaultNamespace
 
         public void Play()
         {
-            foreach (Instrument instrument in _instruments)
+            foreach (Instrument instrument in Instruments)
             {
                 instrument.PlayInOrchestra(_playTimer);
             }
@@ -49,7 +48,7 @@ namespace DefaultNamespace
 
         public void Stop()
         {
-            foreach (Instrument instrument in _instruments)
+            foreach (Instrument instrument in Instruments)
             {
                 instrument.Stop();
             }
@@ -59,16 +58,16 @@ namespace DefaultNamespace
 
         public void AddInstrument(Instrument instrument)
         {
-            _instruments.Add(instrument);
+            Instruments.Add(instrument);
+            EnableInstrument(instrument);
         }
 
         public void EnableInstrument(Instrument instrument)
         {
-            if (!_isPlaying)
-                return;
-
             instrument.IsMuted = false;
-            instrument.PlayInOrchestra(_playTimer);
+            
+            if (_isPlaying)
+                instrument.PlayInOrchestra(_playTimer);
         }
 
         public void DisableInstrument(Instrument instrument)

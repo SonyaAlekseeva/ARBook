@@ -12,11 +12,9 @@ namespace DefaultNamespace
 
         private int _page;
 
-        public void Initialize(InstrumentData data, int page, Vector3 position)
+        public void Initialize(int page)
         {
-            Data = data;
             _page = page;
-            transform.position = position;
         }
 
         public void PlayInOrchestra(float time)

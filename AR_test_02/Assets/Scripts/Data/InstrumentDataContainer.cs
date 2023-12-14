@@ -7,6 +7,6 @@ namespace DefaultNamespace
     public class InstrumentDataContainer
     {
         [SerializeField] public string Name;
-        [SerializeField] public InstrumentData Data;
+        [SerializeField] public SpawnedInstrumentsContainer Target;
     }
 }

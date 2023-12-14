@@ -1,3 +1,4 @@
+using DefaultNamespace.UI.Panels;
 using UnityEngine;
 
 namespace DefaultNamespace
@@ -5,11 +6,10 @@ namespace DefaultNamespace
     [CreateAssetMenu(fileName = "Dictionary Data")]
     public class DictionaryData : ScriptableObject
     {
-        [SerializeField] public int Number;
-        [SerializeField] public string Name;
-        [SerializeField] public string Page;
-        [SerializeField] public GameObject Illustration;
-        [SerializeField] public string Description;
-
+        public string Name;
+        public string Page;
+        public Sprite Illustration;
+        [TextArea] public string Description;
+        public DictionarySlide FullInfoSlide;
     }
 }
