@@ -23,8 +23,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 3883249812905295127
       m_GuidHigh: 16321103157546345402
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Violin_1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -33,8 +33,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 11579941099543946033
       m_GuidHigh: 6722458879846486250
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Violin_2
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -43,8 +43,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 11917874143534893739
       m_GuidHigh: 9286118038571130745
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Cello_1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -53,8 +53,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 4284223154304069225
       m_GuidHigh: 16687604384998958520
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Cello_2
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -63,8 +63,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 11570907637375369487
       m_GuidHigh: 2790337368325044139
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Cello_Flute_Clarinet_1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -73,8 +73,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 2703300813067322995
       m_GuidHigh: 11501460479359651704
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Cello_Flute_Clarinet_2
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -83,8 +83,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 11476540534844706637
       m_GuidHigh: 9974285715167451833
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Clarinet_Violin_Cello_Triangle_1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -93,8 +93,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 7423066454208076740
       m_GuidHigh: 1266020112531616921
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Clarinet_Violin_Cello_Triangle_FrenchHorn_1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -103,8 +103,8 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 591245520531708493
       m_GuidHigh: 17836489683064599083
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Flute_Clarinet_1
     m_Texture: {fileID: 0}
   - m_SerializedGuid:
@@ -113,7 +113,7 @@ MonoBehaviour:
     m_SerializedTextureGuid:
       m_GuidLow: 6292874454556402829
       m_GuidHigh: 9319064895844077210
-    m_Size: {x: 0, y: 0}
-    m_SpecifySize: 0
+    m_Size: {x: 0.42951456, y: 0.28}
+    m_SpecifySize: 1
     m_Name: Flute_Clarinet_2
     m_Texture: {fileID: 0}

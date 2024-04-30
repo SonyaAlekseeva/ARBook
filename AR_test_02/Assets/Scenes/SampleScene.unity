@@ -1896,6 +1896,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   PlayTimeSeconds: 0
+  MainPanel: {fileID: 0}
 --- !u!4 &569125030
 Transform:
   m_ObjectHideFlags: 0
@@ -5533,6 +5534,9 @@ MonoBehaviour:
   OnboardingPanel: {fileID: 1965410340}
   DictionaryButton: {fileID: 629384859}
   DictionaryPanel: {fileID: 134792523}
+  InfoButtonPrefab: {fileID: 0}
+  InfoButtonsParent: {fileID: 0}
+  MainCamera: {fileID: 0}
 --- !u!1 &1727136705
 GameObject:
   m_ObjectHideFlags: 0
