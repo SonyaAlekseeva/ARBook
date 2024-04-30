@@ -1,38 +1,28 @@
 ﻿using System.Collections.Generic;
+using System.Linq;
+using DefaultNamespace.UI.Panels;
 using UnityEngine;
 
 namespace DefaultNamespace
 {
     public class Orchestra : MonoBehaviour
     {
-        public float PlayTimer => _playTimer;
+        public float PlayTimer => _playTimeNormalized;
         public float PlayTimeSeconds;
+        public MainPanel MainPanel;
         public List<Instrument> Instruments { get; } = new List<Instrument>();
 
         private bool _isPlaying;
-        private float _playTimer;
+        private float _playTimeNormalized;
 
-        private void Update()
+        public void SetPlayTime(float normalizedTime)
         {
-            if (!_isPlaying)
-                return;
-            
-            _playTimer += Time.deltaTime;
-            if (_playTimer >= PlayTimeSeconds)
-            {
-                Stop();
-                _playTimer = 0;
-            }
-        }
-
-        public void SetPlayTime(float t)
-        {
-            _playTimer = PlayTimeSeconds * t;
+            _playTimeNormalized = normalizedTime;
             
             foreach (Instrument instrument in Instruments)
             {
                 if (!instrument.IsMuted)
-                    instrument.PlayInOrchestra(_playTimer);
+                    instrument.PlayInOrchestra(normalizedTime);
             }
         }
 
@@ -40,7 +30,7 @@ namespace DefaultNamespace
         {
             foreach (Instrument instrument in Instruments)
             {
-                instrument.PlayInOrchestra(_playTimer);
+                instrument.PlayInOrchestra(0f);
             }
 
             _isPlaying = true;
@@ -48,6 +38,9 @@ namespace DefaultNamespace
 
         public void Stop()
         {
+            Instrument first = Instruments.First();
+            _playTimeNormalized = first.MusicSource.time / first.MusicSource.clip.length;
+            
             foreach (Instrument instrument in Instruments)
             {
                 instrument.Stop();
@@ -60,6 +53,7 @@ namespace DefaultNamespace
         {
             Instruments.Add(instrument);
             EnableInstrument(instrument);
+            MainPanel.CreateInfoButtonForInstrument(instrument);
         }
 
         public void EnableInstrument(Instrument instrument)
@@ -67,13 +61,27 @@ namespace DefaultNamespace
             instrument.IsMuted = false;
             
             if (_isPlaying)
-                instrument.PlayInOrchestra(_playTimer);
+                instrument.PlayInOrchestra(_playTimeNormalized);
         }
 
         public void DisableInstrument(Instrument instrument)
         {
             instrument.IsMuted = true;
             instrument.Stop();
+        }
+
+        public void ClearInstruments()
+        {
+            Stop();
+            
+            MainPanel.ClearInfoButtons();
+            
+            foreach (Instrument instrument in Instruments)
+            {
+                Destroy(instrument.gameObject);
+            }
+            
+            Instruments.Clear();
         }
     }
 }

@@ -157,6 +157,7 @@ PlayerSettings:
   androidMaxAspectRatio: 2.1
   applicationIdentifier:
     Android: com.sonelex.AR_test_02
+    Standalone: com.sonelex.AR-test-02
     iPhone: com.sonelex.AR-test-02
   buildNumber:
     Standalone: 0

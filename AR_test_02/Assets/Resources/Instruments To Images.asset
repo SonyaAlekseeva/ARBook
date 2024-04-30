@@ -13,19 +13,23 @@ MonoBehaviour:
   m_Name: Instruments To Images
   m_EditorClassIdentifier: 
   Instruments:
-  - Name: Violin
-    Target: {fileID: 916265110239634413, guid: e88c2634cb6b7764bb865596c4c8603d, type: 3}
   - Name: Cello
-    Target: {fileID: 0}
-  - Name: FrenchHorn
-    Target: {fileID: 0}
+    Target: {fileID: 2346625176134432185, guid: 925ba8a49a001ba44bd827faa6432674, type: 3}
+  - Name: Cello_Flute_Clarinet
+    Target: {fileID: 9138177411904457231, guid: 738a1f49ea8c1e64785eed3912bd9536, type: 3}
+  - Name: Clarinet_Violin_Cello_Triangle
+    Target: {fileID: 8483064058155409278, guid: 555de5ee2f2d42245a19bdb45c25cac1, type: 3}
+  - Name: Clarinet_Violin_Cello_Triangle_FrenchHorn
+    Target: {fileID: 527435985254516609, guid: 302a47ea0543f354ca279370a41bc39b, type: 3}
+  - Name: Flute_Clarinet
+    Target: {fileID: 3298238701966448881, guid: 480432f4c55477b48a83cf264601259e, type: 3}
   - Name: Flute
-    Target: {fileID: 0}
-  - Name: Clarinet
-    Target: {fileID: 0}
-  - Name: Triangle
-    Target: {fileID: 0}
+    Target: {fileID: 4259412826086035138, guid: ea56132567312cf46b88c06f7946a1c3, type: 3}
+  - Name: FrenchHorn
+    Target: {fileID: 96042045251032813, guid: 7b6a3204a0b638a478f6826dc809b9f5, type: 3}
   - Name: Timpani
-    Target: {fileID: 0}
+    Target: {fileID: 8355745051993509309, guid: f374521a259815a4894f6f6ea1d69ce9, type: 3}
   - Name: Violin_Cello
     Target: {fileID: 7717432758255282040, guid: 128a2c74780b0ce489fc0f49bddb37a4, type: 3}
+  - Name: Violin
+    Target: {fileID: 916265110239634413, guid: e88c2634cb6b7764bb865596c4c8603d, type: 3}

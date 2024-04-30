@@ -6,6 +6,7 @@ namespace DefaultNamespace
     public class InstrumentData : ScriptableObject
     {
         public string Name;
+        public float InfoButtonHeight;
         public AudioClip MusicInOrchestra;
         public AudioClip MusicSolo;
         public string[] Facts;

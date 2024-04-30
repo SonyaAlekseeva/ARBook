@@ -15,7 +15,7 @@ namespace DefaultNamespace
         public ARRaycastManager RaycastManager;
 
         private List<ARRaycastHit> _hitResults = new();
-        private SpawnedInstrumentsContainer _scannedInstrument;
+        private SpawnedInstrumentsContainer _scannedInstrumentContainer;
         private int _scannedPage;
 
         public void ScanInstrument(string imageName)
@@ -23,12 +23,12 @@ namespace DefaultNamespace
             string[] values = imageName.Split("_");
             string name = values[0];
             _scannedPage = int.Parse(values[1]);
-            _scannedInstrument = Instruments.GetInstrumentByName(name);
+            _scannedInstrumentContainer = Instruments.GetInstrumentByName(name);
         }
 
         private void Update()
         {
-            if (_scannedInstrument == null)
+            if (_scannedInstrumentContainer == null)
                 return;
             
             if (Input.touchCount == 0)
@@ -40,7 +40,7 @@ namespace DefaultNamespace
             
             var ray = Camera.main.ScreenPointToRay(touch.position);
             var result = RaycastManager.Raycast(ray, _hitResults, TrackableType.Planes);
-            if (result)
+            if (!result)
                 return;
 
             var hit = _hitResults[0];
@@ -49,7 +49,7 @@ namespace DefaultNamespace
 
         private void SpawnInstrument(Vector3 position, Vector3 planeNormal)
         {
-            if (_scannedInstrument == null)
+            if (_scannedInstrumentContainer == null)
                 return;
 
             var cameraPosition = Camera.main.transform.position;
@@ -57,11 +57,13 @@ namespace DefaultNamespace
             var projectedDirection = Vector3.ProjectOnPlane(directionToCamera, planeNormal);
             var rotation = Quaternion.LookRotation(projectedDirection, planeNormal);
             
-            var instrumentsContainer = Instantiate(_scannedInstrument, position, rotation);
+            Orchestra.ClearInstruments();
+            
+            var instrumentsContainer = Instantiate(_scannedInstrumentContainer, position, rotation);
             instrumentsContainer.Initialize(_scannedPage);
             instrumentsContainer.Register(Orchestra);
 
-            _scannedInstrument = null;
+            _scannedInstrumentContainer = null;
             OnSpawned?.Invoke();
         }
     }
