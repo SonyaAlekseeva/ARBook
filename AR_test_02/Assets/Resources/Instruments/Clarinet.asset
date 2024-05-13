@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Clarinet
   m_EditorClassIdentifier: 
   Name: "\u041A\u043B\u0430\u0440\u043D\u0435\u0442"
-  Model: {fileID: 0}
-  MusicInOrchestra: {fileID: 0}
-  MusicSolo: {fileID: 0}
-  Facts: []
+  InfoButtonHeight: 0
+  Music: {fileID: 8300000, guid: 8b7ad95c179d03041a28f2f20ee3b6fc, type: 3}
+  Facts:
+  - Clarinet Fact 1
+  - Clarinet Fact 2
+  - Clarinet Fact 3

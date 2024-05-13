@@ -15,14 +15,17 @@ namespace DefaultNamespace
         public ARRaycastManager RaycastManager;
 
         private List<ARRaycastHit> _hitResults = new();
-        private SpawnedInstrumentsContainer _scannedInstrumentContainer;
-        private int _scannedPage;
+        private InstrumentDataContainer _scannedInstrumentContainer;
 
         public void ScanInstrument(string imageName)
         {
-            string[] values = imageName.Split("_");
-            string name = values[0];
-            _scannedPage = int.Parse(values[1]);
+            Debug.Log($"Scanned instrument: {imageName}");
+            if (string.IsNullOrWhiteSpace(imageName))
+            {
+                Debug.LogError("Scanned empty instrument name!");
+                return;
+            }
+            
             _scannedInstrumentContainer = Instruments.GetInstrumentByName(name);
         }
 
@@ -59,8 +62,8 @@ namespace DefaultNamespace
             
             Orchestra.ClearInstruments();
             
-            var instrumentsContainer = Instantiate(_scannedInstrumentContainer, position, rotation);
-            instrumentsContainer.Initialize(_scannedPage);
+            var instrumentsContainer = Instantiate(_scannedInstrumentContainer.Target, position, rotation);
+            instrumentsContainer.Initialize(_scannedInstrumentContainer);
             instrumentsContainer.Register(Orchestra);
 
             _scannedInstrumentContainer = null;

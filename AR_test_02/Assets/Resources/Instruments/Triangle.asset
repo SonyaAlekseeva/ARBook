@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Triangle
   m_EditorClassIdentifier: 
   Name: "\u0422\u0440\u0435\u0443\u0433\u043E\u043B\u044C\u043D\u0438\u043A"
-  Model: {fileID: 0}
-  MusicInOrchestra: {fileID: 0}
-  MusicSolo: {fileID: 0}
-  Facts: []
+  InfoButtonHeight: 0
+  Music: {fileID: 8300000, guid: 3697fcd3345ee084cbcc205d07690908, type: 3}
+  Facts:
+  - Triangle Fact 1
+  - Triangle Fact 2
+  - Triangle Fact 3

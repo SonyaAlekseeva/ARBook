@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Cello
   m_EditorClassIdentifier: 
   Name: "\u0412\u0438\u043E\u043B\u043E\u043D\u0447\u0435\u043B\u044C"
-  Model: {fileID: 0}
-  MusicInOrchestra: {fileID: 0}
-  MusicSolo: {fileID: 0}
+  InfoButtonHeight: 0
+  Music: {fileID: 8300000, guid: d794fc55cc5126747b37f3c95b6208a5, type: 3}
   Facts:
   - Cello Fact 1
   - Cello Fact 2
+  - Cello Fact 3

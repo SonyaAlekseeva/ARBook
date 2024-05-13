@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Flute
   m_EditorClassIdentifier: 
   Name: "\u0424\u043B\u0435\u0439\u0442\u0430"
-  Model: {fileID: 0}
-  MusicInOrchestra: {fileID: 0}
-  MusicSolo: {fileID: 0}
-  Facts: []
+  InfoButtonHeight: 0
+  Music: {fileID: 8300000, guid: 33a187f1d53e5304e8087c8aa3c37500, type: 3}
+  Facts:
+  - Flute Fact 1
+  - Flute Fact 2
+  - Flute Fact 3

@@ -28,7 +28,7 @@ namespace DefaultNamespace.UI.Panels
 
         private void Start()
         {
-            _infoButtons = new List<InstrumentInfo>();
+            _infoButtons ??= new List<InstrumentInfo>();
             
             ScanButton.onClick.AddListener(() => OpenPanel(ScanPanel.gameObject));
             OnboardingButton.onClick.AddListener(() => OpenPanel(OnboardingPanel.gameObject));
@@ -51,9 +51,12 @@ namespace DefaultNamespace.UI.Panels
 
         public void CreateInfoButtonForInstrument(Instrument instrument)
         {
-            var button = Instantiate(InfoButtonPrefab, InfoButtonsParent);
-            button.SetUpForInstrument(instrument);
-            button.OnInfoClicked += OnInstrumentInfoClicked;
+            Debug.Log("Creating info button for instrument");
+            // var button = Instantiate(InfoButtonPrefab, InfoButtonsParent);
+            // button.SetUpForInstrument(instrument);
+            // button.OnInfoClicked += OnInstrumentInfoClicked;
+            //
+            // _infoButtons.Add(button);
         }
 
         private void OnInstrumentInfoClicked(bool requestedState, InstrumentInfo info)
@@ -68,10 +71,20 @@ namespace DefaultNamespace.UI.Panels
 
         public void ClearInfoButtons()
         {
+            if (_infoButtons == null)
+            {
+                _infoButtons = new List<InstrumentInfo>();
+                return;
+            }
+            
             foreach (var infoButton in _infoButtons)
             {
+                if (infoButton == null)
+                    continue;
+                
                 Destroy(infoButton.gameObject);
             }
+            
             _infoButtons.Clear();
         }
 

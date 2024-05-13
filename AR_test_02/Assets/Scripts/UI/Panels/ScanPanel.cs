@@ -10,6 +10,7 @@ namespace DefaultNamespace.UI.Panels
         public GameObject PlaceView;
         public ARTrackedImageManager ImageManager;
         public InstrumentSpawner Spawner;
+        public PlaneMarkerUpdater PlaneMarkerUpdater;
 
         private void OnEnable()
         {
@@ -21,6 +22,8 @@ namespace DefaultNamespace.UI.Panels
 
             Spawner.enabled = true;
             Spawner.OnSpawned += OnInstrumentSpawned;
+            
+            PlaneMarkerUpdater.SetMarkerState(true);
         }
 
         private void OnDisable()
@@ -30,6 +33,8 @@ namespace DefaultNamespace.UI.Panels
             
             Spawner.enabled = false;
             Spawner.OnSpawned -= OnInstrumentSpawned;
+            
+            PlaneMarkerUpdater.SetMarkerState(false);
         }
 
         private void OnTrackedChanged(ARTrackedImagesChangedEventArgs eventArgs)
@@ -42,7 +47,8 @@ namespace DefaultNamespace.UI.Panels
             
             foreach (var trackedImage in eventArgs.added)
             {
-                Spawner.ScanInstrument(trackedImage.name);
+                Debug.Log($"Tracked changed, name: {trackedImage.name}, reference name: {trackedImage.referenceImage.name}");
+                Spawner.ScanInstrument(trackedImage.referenceImage.name);
             }
         }
 

@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Violin
   m_EditorClassIdentifier: 
   Name: "\u0421\u043A\u0440\u0438\u043F\u043A\u0430"
-  Model: {fileID: 8161736068681812697, guid: 81e804b83242b8c40b0c010684a1d7f1, type: 3}
-  MusicInOrchestra: {fileID: 0}
-  MusicSolo: {fileID: 0}
+  InfoButtonHeight: 0
+  Music: {fileID: 8300000, guid: 67bd1be128a1d3348a8d0aa67a26c31f, type: 3}
   Facts:
   - Violin Fact 1
   - Violin Fact 2
+  - Violin Fact 3

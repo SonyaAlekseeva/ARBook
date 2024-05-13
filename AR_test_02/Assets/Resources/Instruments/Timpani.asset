@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: Timpani
   m_EditorClassIdentifier: 
   Name: "\u041B\u0438\u0442\u0430\u0432\u0440\u044B"
-  Model: {fileID: 0}
-  MusicInOrchestra: {fileID: 0}
-  MusicSolo: {fileID: 0}
-  Facts: []
+  InfoButtonHeight: 0
+  Music: {fileID: 8300000, guid: c1c5a51dd7cb385468979b8c8a4d8b90, type: 3}
+  Facts:
+  - Timpani Fact 1
+  - Timpani Fact 2
+  - Timpani Fact 3

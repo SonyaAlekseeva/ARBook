@@ -22,7 +22,7 @@ namespace DefaultNamespace
             foreach (Instrument instrument in Instruments)
             {
                 if (!instrument.IsMuted)
-                    instrument.PlayInOrchestra(normalizedTime);
+                    instrument.Play(normalizedTime);
             }
         }
 
@@ -30,7 +30,7 @@ namespace DefaultNamespace
         {
             foreach (Instrument instrument in Instruments)
             {
-                instrument.PlayInOrchestra(0f);
+                instrument.Play(0f);
             }
 
             _isPlaying = true;
@@ -38,11 +38,25 @@ namespace DefaultNamespace
 
         public void Stop()
         {
-            Instrument first = Instruments.First();
-            _playTimeNormalized = first.MusicSource.time / first.MusicSource.clip.length;
+            if (Instruments == null) return;
+            if (Instruments.Count == 0) return;
             
-            foreach (Instrument instrument in Instruments)
+            Instrument first = Instruments.First();
+            
+            if (first.MusicSource != null && first.MusicSource.clip != null)
+                _playTimeNormalized = first.MusicSource.time / first.MusicSource.clip.length;
+            else
+                _playTimeNormalized = 0f;
+
+            for (int i = Instruments.Count - 1; i >= 0; i--)
             {
+                var instrument = Instruments[i];
+                if (instrument == null)
+                {
+                    Instruments.RemoveAt(i);
+                    continue;
+                }
+
                 instrument.Stop();
             }
 
@@ -54,6 +68,12 @@ namespace DefaultNamespace
             Instruments.Add(instrument);
             EnableInstrument(instrument);
             MainPanel.CreateInfoButtonForInstrument(instrument);
+            
+            if (instrument.MusicSource == null || instrument.MusicSource.clip == null)
+                return;
+
+            float playTime = instrument.MusicSource.clip.length;
+            PlayTimeSeconds = Mathf.Max(PlayTimeSeconds, playTime);
         }
 
         public void EnableInstrument(Instrument instrument)
@@ -61,7 +81,7 @@ namespace DefaultNamespace
             instrument.IsMuted = false;
             
             if (_isPlaying)
-                instrument.PlayInOrchestra(_playTimeNormalized);
+                instrument.Play(_playTimeNormalized);
         }
 
         public void DisableInstrument(Instrument instrument)
@@ -82,6 +102,7 @@ namespace DefaultNamespace
             }
             
             Instruments.Clear();
+            PlayTimeSeconds = 0f;
         }
     }
 }

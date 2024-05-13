@@ -13,7 +13,9 @@ MonoBehaviour:
   m_Name: FrenchHorn
   m_EditorClassIdentifier: 
   Name: "\u0412\u0430\u043B\u0442\u043E\u0440\u043D\u0430"
-  Model: {fileID: 0}
-  MusicInOrchestra: {fileID: 0}
-  MusicSolo: {fileID: 0}
-  Facts: []
+  InfoButtonHeight: 0
+  Music: {fileID: 8300000, guid: 07fbb75989bbb3a45a6543bf1f00af5b, type: 3}
+  Facts:
+  - French Horn Fact 1
+  - French Horn Fact 2
+  - French Horn Fact 3

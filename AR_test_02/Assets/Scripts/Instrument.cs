@@ -4,29 +4,30 @@ namespace DefaultNamespace
 {
     public class Instrument : MonoBehaviour
     {
+        public string Name;
+        
         public bool IsMuted;
-        
         public int Page;
-        
+
         public Animation Animation;
         public InstrumentData Data;
         public AudioSource MusicSource;
 
-        public void Initialize(int page)
+        private InstrumentOnImageInfo _info;
+        
+        public void Initialize(InstrumentOnImageInfo info)
         {
-            Page = page;
+            _info = info;
+            Page = info.FactsPage;
+            MusicSource.clip = info.MusicClip != null ? info.MusicClip : Data.Music;
         }
 
-        public void PlayInOrchestra(float normalizedTime)
+        public void Play(float normalizedTime)
         {
-            MusicSource.clip = Data.MusicInOrchestra;
+            if (MusicSource.clip == null)
+                return;
+            
             MusicSource.time = MusicSource.clip.length * normalizedTime;
-            MusicSource.Play();
-        }
-
-        public void PlaySolo()
-        {
-            MusicSource.clip = Data.MusicSolo;
             MusicSource.Play();
         }
 

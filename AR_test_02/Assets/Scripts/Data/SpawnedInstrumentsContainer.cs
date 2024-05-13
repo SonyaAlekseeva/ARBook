@@ -6,11 +6,13 @@ namespace DefaultNamespace
     {
         public Instrument[] Instruments;
 
-        public void Initialize(int page)
+        public void Initialize(InstrumentDataContainer instrumentDataContainer)
         {
             foreach (var instrument in Instruments)
             {
-                instrument.Initialize(page);
+                var info = instrumentDataContainer.GetInstrumentInfo(instrument.Name);
+                if (info != null)
+                    instrument.Initialize(info);
             }
         }
 

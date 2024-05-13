@@ -7,8 +7,7 @@ namespace DefaultNamespace
     {
         public string Name;
         public float InfoButtonHeight;
-        public AudioClip MusicInOrchestra;
-        public AudioClip MusicSolo;
+        public AudioClip Music;
         public string[] Facts;
     }
 }

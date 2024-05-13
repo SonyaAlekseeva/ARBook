@@ -7,12 +7,12 @@ namespace DefaultNamespace
     {
         [SerializeField] public InstrumentDataContainer[] Instruments;
 
-        public SpawnedInstrumentsContainer GetInstrumentByName(string name)
+        public InstrumentDataContainer GetInstrumentByName(string name)
         {
             foreach (var instrument in Instruments)
             {
                 if (instrument.Name == name)
-                    return instrument.Target;
+                    return instrument;
             }
 
             return null;
