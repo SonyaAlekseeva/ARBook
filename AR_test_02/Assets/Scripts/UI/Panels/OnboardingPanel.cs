@@ -4,7 +4,9 @@ namespace DefaultNamespace.UI.Panels
 {
     public class OnboardingPanel : MonoBehaviour
     {
-        public GameObject NextPanel;
+        public bool ReturnToMainPanel;
+        public GameObject ScanPanel;
+        public GameObject MainPanel;
         public OnboardingPage[] Pages;
 
         private int _currentPageId;
@@ -54,7 +56,12 @@ namespace DefaultNamespace.UI.Panels
         private void Skip()
         {
             gameObject.SetActive(false);
-            NextPanel.SetActive(true);
+            if (ReturnToMainPanel)
+                MainPanel.SetActive(true);
+            else
+                ScanPanel.SetActive(true);
+
+            ReturnToMainPanel = false;
         }
     }
 }

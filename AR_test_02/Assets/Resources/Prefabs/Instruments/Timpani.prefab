@@ -46,6 +46,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82192c8f79044fd29d02830d5f9fade5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Timpani
+  IsMuted: 0
+  Page: 0
   Animation: {fileID: 0}
   Data: {fileID: 11400000, guid: 0b308f5f195e6dc4687df82ea9d8a5a9, type: 2}
   MusicSource: {fileID: 4328957882500309512}

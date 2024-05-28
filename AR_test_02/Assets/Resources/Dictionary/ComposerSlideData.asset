@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: "\u041A\u043E\u043C\u043F\u043E\u0437\u0438\u0442\u043E\u0440 "
   Page: "\u0441\u0442\u0440. 28-29"
-  Illustration: {fileID: 21300000, guid: 3a182a7d28bf3de49bfb2691e65d753c, type: 3}
+  Illustration: {fileID: 21300000, guid: 2e68ba4021a9bdb4fbf9da889b64d051, type: 3}
   Description: "\u041F\u0440\u0435\u0434\u0441\u0442\u0430\u0432\u044C \u0441\u0435\u0431\u0435:
     \u0442\u044B \u0437\u0430\u0445\u043E\u0434\u0438\u0448\u044C \u0432 \u043A\u043E\u043D\u0446\u0435\u0440\u0442\u043D\u044B\u0439
     \u0437\u0430\u043B, \u0441\u0438\u044F\u044E\u0449\u0438\u0439 \u043E\u0433\u043D\u044F\u043C\u0438.

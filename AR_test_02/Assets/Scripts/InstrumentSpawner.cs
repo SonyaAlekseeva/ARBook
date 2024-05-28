@@ -9,6 +9,8 @@ namespace DefaultNamespace
     public class InstrumentSpawner : MonoBehaviour
     {
         public event Action OnSpawned;
+
+        public float MaxYPercent;
         
         public Orchestra Orchestra;
         public InstrumentsToImages Instruments;
@@ -26,19 +28,26 @@ namespace DefaultNamespace
                 return;
             }
             
-            _scannedInstrumentContainer = Instruments.GetInstrumentByName(name);
+            _scannedInstrumentContainer = Instruments.GetInstrumentByName(imageName);
+            if (_scannedInstrumentContainer == null)
+                Debug.LogError("Cannot find instruments for this image!");
         }
 
         private void Update()
         {
-            if (_scannedInstrumentContainer == null)
-                return;
-            
             if (Input.touchCount == 0)
                 return;
 
             var touch = Input.GetTouch(0);
             if (touch.phase != TouchPhase.Began)
+                return;
+
+            float maxY = Screen.height * MaxYPercent;
+            Debug.Log($"Touch at Y: {touch.position.y}, max: {maxY}, touch percent: {touch.position.y / Screen.height}");
+            if (touch.position.y > maxY)
+                return;
+            
+            if (_scannedInstrumentContainer == null)
                 return;
             
             var ray = Camera.main.ScreenPointToRay(touch.position);
@@ -50,10 +59,13 @@ namespace DefaultNamespace
             SpawnInstrument(hit.pose.position, hit.pose.up);
         }
 
-        private void SpawnInstrument(Vector3 position, Vector3 planeNormal)
+        public void SpawnInstrument(Vector3 position, Vector3 planeNormal)
         {
             if (_scannedInstrumentContainer == null)
+            {
+                Debug.Log("Cannot spawn instrument, cause it's null!");
                 return;
+            }
 
             var cameraPosition = Camera.main.transform.position;
             var directionToCamera = cameraPosition - position;
@@ -62,6 +74,7 @@ namespace DefaultNamespace
             
             Orchestra.ClearInstruments();
             
+            Debug.Log($"Spawning instrument container {_scannedInstrumentContainer.Target.name}");
             var instrumentsContainer = Instantiate(_scannedInstrumentContainer.Target, position, rotation);
             instrumentsContainer.Initialize(_scannedInstrumentContainer);
             instrumentsContainer.Register(Orchestra);

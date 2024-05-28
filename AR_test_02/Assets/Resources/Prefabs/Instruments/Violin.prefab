@@ -174,6 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82192c8f79044fd29d02830d5f9fade5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Violin
+  IsMuted: 0
+  Page: 0
   Animation: {fileID: 0}
   Data: {fileID: 11400000, guid: 745d27bac0d6c4f4eb1af923bc929de9, type: 2}
   MusicSource: {fileID: 6491494167400611486}

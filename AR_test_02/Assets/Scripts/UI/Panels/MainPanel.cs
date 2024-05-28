@@ -7,6 +7,9 @@ namespace DefaultNamespace.UI.Panels
 {
     public class MainPanel : MonoBehaviour
     {
+        [Header("Main")]
+        public Orchestra Orchestra;
+        
         [Header("Scan")]
         public Button ScanButton;
         public ScanPanel ScanPanel;
@@ -15,14 +18,13 @@ namespace DefaultNamespace.UI.Panels
         public Button OnboardingButton;
         public OnboardingPanel OnboardingPanel;
         
-        [Header("Onboarding")]
+        [Header("Dictionary")]
         public Button DictionaryButton;
         public DictionaryPanel DictionaryPanel;
 
-        [Header("Insrument info")]
+        [Header("Instrument info")]
+        public RectTransform PanelTransform;
         public InstrumentInfo InfoButtonPrefab;
-        public Transform InfoButtonsParent;
-        public Camera MainCamera;
         
         private List<InstrumentInfo> _infoButtons;
 
@@ -31,42 +33,33 @@ namespace DefaultNamespace.UI.Panels
             _infoButtons ??= new List<InstrumentInfo>();
             
             ScanButton.onClick.AddListener(() => OpenPanel(ScanPanel.gameObject));
-            OnboardingButton.onClick.AddListener(() => OpenPanel(OnboardingPanel.gameObject));
-            DictionaryButton.onClick.AddListener(() => OpenPanel(DictionaryPanel.gameObject));
-        }
-
-        private void Update()
-        {
-            foreach (var infoButton in _infoButtons)
+            OnboardingButton.onClick.AddListener(() =>
             {
-                var position = infoButton.Instrument.transform.position;
-                float height = infoButton.Instrument.Data.InfoButtonHeight;
-
-                var infoButtonPosition = position + Vector3.up * height;
-                var screenPosition = MainCamera.WorldToScreenPoint(infoButtonPosition);
-
-                infoButton.transform.position = screenPosition;
-            }
+                OnboardingPanel.ReturnToMainPanel = true;
+                OpenPanel(OnboardingPanel.gameObject);
+            });
+            DictionaryButton.onClick.AddListener(() => DictionaryPanel.gameObject.SetActive(true));
         }
 
         public void CreateInfoButtonForInstrument(Instrument instrument)
         {
-            Debug.Log("Creating info button for instrument");
-            // var button = Instantiate(InfoButtonPrefab, InfoButtonsParent);
-            // button.SetUpForInstrument(instrument);
-            // button.OnInfoClicked += OnInstrumentInfoClicked;
-            //
-            // _infoButtons.Add(button);
+            Debug.Log($"Creating info button for instrument {instrument.Name}");
+            var button = Instantiate(InfoButtonPrefab);
+            button.transform.position = instrument.transform.position + Vector3.up * instrument.Data.InfoButtonHeight;
+            button.SetUpForInstrument(instrument);
+            button.SetFactsState(false);
+            button.SetPanel(PanelTransform);
+            button.OnInfoClicked += OnInstrumentInfoClicked;
+            
+            _infoButtons.Add(button);
         }
 
         private void OnInstrumentInfoClicked(bool requestedState, InstrumentInfo info)
         {
             foreach (var infoButton in _infoButtons)
             {
-                infoButton.SetFactsState(false);
+                infoButton.SetFactsState(infoButton == info && !infoButton.FactsActive);
             }
-            
-            info.SetFactsState(true);
         }
 
         public void ClearInfoButtons()
@@ -90,8 +83,14 @@ namespace DefaultNamespace.UI.Panels
 
         private void OpenPanel(GameObject panel)
         {
+            Orchestra.Stop();
             gameObject.SetActive(false);
             panel.SetActive(true);
+
+            foreach (var infoButton in _infoButtons)
+            {
+                infoButton.SetFactsState(false);
+            }
         }
     }
 }

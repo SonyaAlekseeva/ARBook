@@ -174,6 +174,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82192c8f79044fd29d02830d5f9fade5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: FrenchHorn
+  IsMuted: 0
+  Page: 0
   Animation: {fileID: 0}
   Data: {fileID: 11400000, guid: eb04dc565374a3141b84e10cca228c62, type: 2}
   MusicSource: {fileID: 5515271996517408786}

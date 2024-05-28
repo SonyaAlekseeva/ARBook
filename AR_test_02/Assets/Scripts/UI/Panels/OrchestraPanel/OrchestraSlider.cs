@@ -15,14 +15,15 @@ namespace UI.Panels.OrchestraPanel
 
         private void Start()
         {
-            Slider.onValueChanged.AddListener((value) => OnValueChanged?.Invoke(value));
+            Slider.onValueChanged.AddListener(value => OnValueChanged?.Invoke(value));
         }
 
-        public void SetTime(float elapsed, float total)
+        public void SetTime(float normalizedTime, float totalTime)
         {
-            ElapsedText.text = elapsed.ToString();
-            TotalText.text = total.ToString();
-            Slider.SetValueWithoutNotify(elapsed / total);
+            float elapsedTime = normalizedTime * totalTime;
+            ElapsedText.text = (Mathf.Round(elapsedTime * 100f) / 100f).ToString();
+            TotalText.text = (Mathf.Round(totalTime * 100f) / 100f).ToString();
+            Slider.SetValueWithoutNotify(normalizedTime);
         }
     }
 }

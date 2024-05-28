@@ -15,24 +15,30 @@ namespace DefaultNamespace
 
         private InstrumentOnImageInfo _info;
         
-        public void Initialize(InstrumentOnImageInfo info)
+        public void Initialize(InstrumentOnImageInfo info, string pageName)
         {
+            Debug.Log($"Initializing instrument {Name} with info, hasMusic: {info.MusicClip != null}");
             _info = info;
-            Page = info.FactsPage;
+            Page = int.Parse(pageName);
             MusicSource.clip = info.MusicClip != null ? info.MusicClip : Data.Music;
         }
 
-        public void Play(float normalizedTime)
+        public void Play(float elapsedTime)
         {
+            Debug.Log($"Playing instrument {Name} with time {elapsedTime}, has clip: {MusicSource.clip != null}, is muted: {IsMuted}");
             if (MusicSource.clip == null)
                 return;
             
-            MusicSource.time = MusicSource.clip.length * normalizedTime;
+            if (IsMuted)
+                return;
+            
+            MusicSource.time = elapsedTime;
             MusicSource.Play();
         }
 
         public void Stop()
         {
+            Debug.Log($"Stopping instrument {Name}");
             MusicSource.Stop();
         }
     }

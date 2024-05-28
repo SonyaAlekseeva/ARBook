@@ -7,7 +7,6 @@ namespace DefaultNamespace.UI.Panels
     {
         [Header("Control")]
         [SerializeField] private Button BackButton;
-        [SerializeField] private MainPanel MainPanel;
         [SerializeField] private Transform FullInfoSlidesParent;
         
         [Header("Frames")]
@@ -45,7 +44,6 @@ namespace DefaultNamespace.UI.Panels
         private void Close()
         {
             gameObject.SetActive(false);
-            MainPanel.gameObject.SetActive(true);
         }
     }
 }

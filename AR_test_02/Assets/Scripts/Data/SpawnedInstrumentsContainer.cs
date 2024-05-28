@@ -11,8 +11,10 @@ namespace DefaultNamespace
             foreach (var instrument in Instruments)
             {
                 var info = instrumentDataContainer.GetInstrumentInfo(instrument.Name);
+                Debug.Log($"Initializing instrument {instrument.Name}, found info: {info != null}");
+                
                 if (info != null)
-                    instrument.Initialize(info);
+                    instrument.Initialize(info, instrumentDataContainer.Name);
             }
         }
 
@@ -20,6 +22,7 @@ namespace DefaultNamespace
         {
             foreach (var instrument in Instruments)
             {
+                Debug.Log($"Registering instrument {instrument.name} in orchestra");
                 orchestra.AddInstrument(instrument);
             }
         }

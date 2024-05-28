@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 82192c8f79044fd29d02830d5f9fade5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  Name: Cello
   IsMuted: 0
   Page: 0
   Animation: {fileID: 0}

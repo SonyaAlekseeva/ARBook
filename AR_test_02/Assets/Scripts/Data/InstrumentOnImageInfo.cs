@@ -7,7 +7,6 @@ namespace DefaultNamespace
     public class InstrumentOnImageInfo
     {
         [SerializeField] public string InstrumentName;
-        [SerializeField] public int FactsPage;
         [SerializeField] public AudioClip MusicClip;
     }
 }

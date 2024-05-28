@@ -25,10 +25,11 @@ namespace DefaultNamespace.UI
         public Transform InstrumentsParent;
         public InstrumentButton InstrumentButtonPrefab;
 
-        private List<InstrumentButton> _instrumentButtons = new();
+        private List<InstrumentButton> _instrumentButtons;
 
         private void Awake()
         {
+            _instrumentButtons = new List<InstrumentButton>();
             foreach (var playButton in PlayButtons)
             {
                 playButton.onClick.AddListener(Play);
@@ -44,6 +45,8 @@ namespace DefaultNamespace.UI
             
             ShowInstrumentsViewButton.onClick.AddListener(ShowInstrumentsView);
             HideInstrumentsViewButton.onClick.AddListener(HideInstrumentsView);
+            
+            SetPlayButtonsState(false);
         }
 
         private void OnEnable()
@@ -53,25 +56,33 @@ namespace DefaultNamespace.UI
 
         private void Update()
         {
+            if (!Orchestra.IsPlaying)
+                SetPlayButtonsState(false);
+            
             foreach (var playSlider in PlaySliders)
             {
-                playSlider.SetTime(Orchestra.PlayTimer, Orchestra.PlayTimeSeconds);
+                playSlider.SetTime(Orchestra.PlayTimeNormalized, Orchestra.PlayTimeSeconds);
             }
         }
 
         private void SetPlayTime(float t)
         {
+            Debug.Log($"Set play time in orchestra to {t}");
             Orchestra.SetPlayTime(t);
         }
 
         private void Play()
         {
+            Debug.Log($"Play orchestra");
             Orchestra.Play();
+            SetPlayButtonsState(true);
         }
 
         private void Pause()
         {
+            Debug.Log($"Stop orchestra");
             Orchestra.Stop();
+            SetPlayButtonsState(false);
         }
         
         private void ShowInstrumentsView()
@@ -96,6 +107,8 @@ namespace DefaultNamespace.UI
                 button.OnInstrumentToggled += ToggleInstrument;
                 _instrumentButtons.Add(button);
             }
+
+            SetPlayButtonsState(false);
         }
 
         private void ToggleInstrument(Instrument instrument)
@@ -113,6 +126,19 @@ namespace DefaultNamespace.UI
                 Destroy(instrument.gameObject);
             }
             _instrumentButtons.Clear();
+        }
+
+        private void SetPlayButtonsState(bool isPlaying)
+        {
+            foreach (var playButton in PlayButtons)
+            {
+                playButton.gameObject.SetActive(!isPlaying);
+            }
+
+            foreach (var pauseButton in PauseButtons)
+            {
+                pauseButton.gameObject.SetActive(isPlaying);
+            }
         }
     }
 }
